@@ -45,13 +45,14 @@
 
     input[type="text"],
     input[type="date"],
-    input[type="file"] {
+    input[type="file"],
+    input[type="password"] {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
       border: 1px solid #ccc;
       border-radius: 5px;
-      text-align: left; /* left-aligned text */
+      text-align: left;
     }
 
     .name-group {
@@ -107,8 +108,7 @@
   <h1>Lucky Star</h1>
 
   <div class="container">
-    <form>
-      <!-- Name group -->
+    <form id="recruitForm">
       <label>Full Name</label>
       <div class="name-group">
         <input type="text" name="firstname" placeholder="First Name">
@@ -145,6 +145,21 @@
       <button type="submit">Submit</button>
     </form>
   </div>
+
+  <script>
+    // Prevent access without login
+    const user = localStorage.getItem('loggedInUser');
+    if (!user) {
+      alert('You must log in first.');
+      window.location.href = 'login.html';
+    }
+
+    // Sample submit handler
+    document.getElementById("recruitForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Form submitted successfully!");
+    });
+  </script>
 
 </body>
 </html>
