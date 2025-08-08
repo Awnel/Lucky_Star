@@ -2,158 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Lucky Star Family Form</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+  <title>Login Page</title>
+  <script>
+    function login(event) {
+      event.preventDefault(); // Prevent form from refreshing page
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom right, #4e54c8, #8f94fb);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
 
-    h1 {
-      color: white;
-      margin-top: 30px;
-      font-size: 40px;
-      font-weight: bold;
+      // Sample login: username=admin, password=1234
+      if (username === "admin" && password === "1234") {
+        // Redirect to index.html after login
+        window.location.href = "index.html";
+      } else {
+        alert("Invalid username or password.");
+      }
     }
-
-    .container {
-      background: white;
-      padding: 30px 20px;
-      border-radius: 15px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      width: 90%;
-      max-width: 480px;
-      margin-top: 20px;
-      margin-bottom: 60px;
-    }
-
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-
-    input[type="text"],
-    input[type="date"],
-    input[type="file"] {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      text-align: left;
-    }
-
-    .name-group {
-      display: flex;
-      gap: 10px;
-    }
-
-    .name-group input {
-      flex: 1;
-    }
-
-    .name-group input.middle-initial {
-      max-width: 60px;
-    }
-
-    .checkbox-group {
-      margin-top: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .checkbox-group label {
-      display: flex;
-      align-items: center;
-      font-weight: normal;
-    }
-
-    .checkbox-group input[type="checkbox"] {
-      margin-right: 10px;
-      transform: scale(1.2);
-    }
-
-    button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 12px;
-      background-color: #4e54c8;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #3b41b8;
-    }
-  </style>
+  </script>
 </head>
 <body>
+  <h2>Login Page</h2>
+  <form onsubmit="login(event)">
+    <label for="username">Username:</label>
+    <input type="text" id="username" required><br><br>
 
-  <h1>Lucky Star</h1>
+    <label for="password">Password:</label>
+    <input type="password" id="password" required><br><br>
 
-  <div class="container">
-    <form id="recruitForm">
-      <label>Full Name</label>
-      <div class="name-group">
-        <input type="text" name="firstname" placeholder="First Name">
-        <input type="text" name="middleinitial" placeholder="M.I." class="middle-initial">
-        <input type="text" name="lastname" placeholder="Last Name">
-      </div>
-
-      <label for="username">Heesay Username</label>
-      <input type="text" id="username" name="username">
-
-      <label for="heesayid">Heesay ID</label>
-      <input type="text" id="heesayid" name="heesayid">
-
-      <label for="birthdate">Birth Date</label>
-      <input type="date" id="birthdate" name="birthdate">
-
-      <label for="facebook">Facebook</label>
-      <input type="text" id="facebook" name="facebook">
-
-      <label>Talents</label>
-      <div class="checkbox-group">
-        <label><input type="checkbox" name="talents" value="Dancing">Dancing</label>
-        <label><input type="checkbox" name="talents" value="Singing">Singing</label>
-        <label><input type="checkbox" name="talents" value="Drawing/Designing">Drawing/Designing</label>
-        <label><input type="checkbox" name="talents" value="Hosting">Hosting</label>
-        <label><input type="checkbox" name="talents" value="Organizing">Organizing</label>
-        <label><input type="checkbox" name="talents" value="Videography">Videography</label>
-        <label><input type="checkbox" name="talents" value="Photography">Photography</label>
-      </div>
-
-      <label for="photo">Upload Clear Picture</label>
-      <input type="file" id="photo" name="photo" accept="image/*">
-
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-
-  <script>
-    const user = localStorage.getItem('loggedInUser');
-    if (!user) {
-      alert('You must log in first.');
-      window.location.href = 'login.html';
-    }
-
-    // Add form submission logic here if needed.
-  </script>
-
+    <button type="submit">Login</button>
+  </form>
 </body>
 </html>
